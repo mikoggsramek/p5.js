@@ -1,7 +1,8 @@
 function noiseObject(x,y, color, scale) {
   this.noiseScale = scale;
-  this.mx = x;
-  this.my = y;
+  this.offset = createVector(x,y);
+  this.mx = 0;
+  this.my = 0;
   this.c = color;
 
   this.update = function () {
@@ -23,7 +24,7 @@ function noiseObject(x,y, color, scale) {
     beginShape();
     let noiseVal;
     for (let x = 0; x < width; x++) {
-      noiseVal = noise((this.mx + x) * this.noiseScale, this.my * this.noiseScale);
+      noiseVal = noise((this.mx + x + this.offset.x) * this.noiseScale, (this.my + this.offset.y) * this.noiseScale);
       stroke(noiseVal * 200);
       vertex(x, noiseVal * height / 2);
       // vertex(x / 2, noiseVal * height / 2);
