@@ -47,45 +47,48 @@ function setup() {
   }
   
   //dom input creation
-  button = createButton('rectangle');
-  button.mousePressed(showRectangle)
-  button.addClass('button');
-  button.parent('buttons');
-  
-  button = createButton('ball');
-  button.mousePressed(showBall1)
-  button.addClass('button');
-  button.parent('buttons');
-  
-  button = createButton('ball 2');
-  button.mousePressed(showBall2)
-  button.addClass('button');
-  button.parent('buttons');
-  
-  button = createButton('multiple balls');
-  button.mousePressed(showBalls)
-  button.addClass('button');
-  button.parent('buttons');
-  
+
   button = createButton('reset');
   button.mousePressed(resetDisplay)
   button.addClass('button');
   button.addClass('buttonReset');
-  button.parent('buttons');
+  button.parent('rectangle');
+
+  button = createButton('rectangle');
+  button.mousePressed(showRectangle)
+  button.addClass('button');
+  button.parent('rectangle');
+  
+  button = createButton('ball');
+  button.mousePressed(showBall1)
+  button.addClass('button');
+  button.parent('ball');
+  
+  button = createButton('ball 2');
+  button.mousePressed(showBall2)
+  button.addClass('button');
+  button.parent('ball');
+  
+  button = createButton('multiple balls');
+  button.mousePressed(showBalls)
+  button.addClass('button');
+  button.parent('ball');
+  
+  
 
   button = createButton('noise');
   button.mousePressed(showNoise)
   button.addClass('button');
-  button.parent('buttons');
+  button.parent('noise');
 
   button = createButton('voronoi');
   button.mousePressed(drawVoronoi);
   button.addClass('button');
-  button.parent('buttons');
+  button.parent('voronoi');
   
   voronoiSlider = createSlider(1, 15, 6);
   voronoiSlider.addClass('button');
-  voronoiSlider.parent('buttons');
+  voronoiSlider.parent('voronoi');
 
   background(255);
 }
