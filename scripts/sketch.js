@@ -38,7 +38,7 @@ function setup() {
   noiseO.push(new noiseObject(0, 0, color(0,0,0), 0.01));
   //}
   noiseO.push(new noiseObject(1000, 1000, color(255,255,255, 150), 0.01));
-  noiseO.push(new noiseObject(10000, 10000, color(0,0,0, 40), 0.01));
+  noiseO.push(new noiseObject(10000, 10000, color(120,120,120, 40), 0.01));
   
   
   for(let index = 0; index < maxBalls; index++){
