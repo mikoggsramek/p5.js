@@ -1,0 +1,45 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+canvas {
+  display: block;
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 90%;
+}
+header {
+  background-color: lightblue; 
+  color:white;
+  font-family: sans-serif;
+  position: relative;
+  padding: 20px 0;
+}
+h1 {
+ padding: 10px 0;
+ margin: 0; 
+ z-index: 2;
+}
+a {
+ text-decoration: none;
+  color:inherit;
+}
+.main-nav ul{
+ list-style:none;
+  padding-left:0;
+}
+.main-nav li{
+  float: left;
+  padding-right: 10px;
+}
+.button {
+ margin-right: 10px; 
+}
+.buttonReset {
+ float: right; 
+  margin-right: 0px;
+}
