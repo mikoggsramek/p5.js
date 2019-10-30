@@ -13,6 +13,8 @@ var voro;
 
 var bok;
 
+var bars;
+
 var displayIndex;
 let button;
 let voronoiSlider;
@@ -34,7 +36,7 @@ function setup() {
   displayIndex = 0;
   
   //In canvas "imagery"
-  rectangle = new Rectangle(-5, 125);
+  rectangle = new Rectangle(-25, 125);
   ball = new Ball(10, 10, bounceFX);
   
   voro = new Voronoi();
@@ -53,66 +55,17 @@ function setup() {
 
   bok = new Bokeh(50);
   bok.create();
+
+  bars = new NoiseBars();
+  
   
   //dom input creation
-
-  button = createButton('reset');
-  button.mousePressed(resetDisplay)
-  button.addClass('button');
-  button.addClass('buttonReset');
-  button.parent('reset');
-
-  button = createButton('rectangle');
-  button.mousePressed(showRectangle)
-  button.addClass('button');
-  button.parent('rectangle');
-  
-  button = createButton('1 ball');
-  button.mousePressed(show1Ball)
-  button.addClass('button');
-  button.parent('ball');
-  
-  button = createButton('2 balls');
-  button.mousePressed(show2Balls)
-  button.addClass('button');
-  button.parent('ball');
-  
-  button = createButton('10 balls');
-  button.mousePressed(show10Balls)
-  button.addClass('button');
-  button.parent('ball');
-
-  button = createButton('50 balls');
-  button.mousePressed(show50Balls)
-  button.addClass('button');
-  button.parent('ball');
-  
-
-  button = createButton('noise');
-  button.mousePressed(showNoise)
-  button.addClass('button');
-  button.parent('noise');
-
-  button = createButton('voronoi');
-  button.mousePressed(drawVoronoi);
-  button.addClass('button');
-  button.parent('voronoi');
-  
-  voronoiSlider = createSlider(1, 15, 6);
-  voronoiSlider.addClass('button');
-  voronoiSlider.parent('voronoi');
-
-  button = createButton('bokeh?');
-  button.mousePressed(showBokeh );
-  button.addClass('button');
-  button.parent('bokeh');
-
+  CreateDomElements();
   background(255);
 }
 
 function windowResized() {
  resizeCanvas(windowWidth, 250);
-  resetDisplay();
 }
 
 function draw() {
@@ -138,9 +91,15 @@ function draw() {
   }else if(displayIndex == 7){
     background(255);
     //3648 × 5472
-    image(streetImage,-1000,-1200, 3648/1, 5472/2);
+    //image(streetImage,-1000,-1200, 3648/1, 5472/2);
     bok.update();
+  }else if(displayIndex == 8){
+    
+    bars.update();
+    text(width, 10, 10);
   }
+
+  
 }
 
 function mousePressed() {
@@ -151,6 +110,7 @@ function mousePressed() {
 
 function showRectangle(){
   displayIndex = 1;
+  rectangle = new Rectangle(-25, random(height));
 }
 function show1Ball(){
   displayIndex = 3;
@@ -182,6 +142,11 @@ function show50Balls(){
 function showNoise() {
   displayIndex = 5;
 }
+function showBars(){
+  //1300
+  bars.create(52, 0, 0, 20, 5);
+  displayIndex = 8;
+}
 
 function drawVoronoi(){
   displayIndex = 6;
@@ -192,11 +157,61 @@ function showBokeh(){
   displayIndex = 7;
 }
 
-function resetDisplay(){
-  rectangle = new Rectangle(-30, random(250));
-  ball.randomize();
-  ball2.randomize();
-  for(let index = 0; index < maxBalls; index++){
-    ballArray[index].randomize();
-  }
+
+
+
+
+function CreateDomElements(){
+
+  button = createButton('rectangle');
+  button.mousePressed(showRectangle)
+  button.addClass('button');
+  button.parent('rectangle');
+
+  button = createButton('1 ball');
+  button.mousePressed(show1Ball)
+  button.addClass('button');
+  button.parent('ball');
+
+  button = createButton('2 balls');
+  button.mousePressed(show2Balls)
+  button.addClass('button');
+  button.parent('ball');
+
+  button = createButton('10 balls');
+  button.mousePressed(show10Balls)
+  button.addClass('button');
+  button.parent('ball');
+
+  button = createButton('50 balls');
+  button.mousePressed(show50Balls)
+  button.addClass('button');
+  button.parent('ball');
+
+
+  button = createButton('waves');
+  button.mousePressed(showNoise)
+  button.addClass('button');
+  button.parent('noise');
+
+  button = createButton('voronoi');
+  button.mousePressed(drawVoronoi);
+  button.addClass('button');
+  button.parent('voronoi');
+
+  voronoiSlider = createSlider(1, 15, 6);
+  voronoiSlider.addClass('button');
+  voronoiSlider.parent('voronoi');
+
+  button = createButton('bokeh?');
+  button.mousePressed(showBokeh);
+  button.addClass('button');
+  button.parent('bokeh');
+
+
+  button = createButton('bars');
+  button.mousePressed(showBars);
+  button.addClass('button');
+  button.parent('noise');
+
 }

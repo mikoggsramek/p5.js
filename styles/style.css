@@ -91,20 +91,19 @@ button:active {
 .wrapper div {
   padding: 10px 0;
 }
-
-.ball, .noise, .rectangle, .reset, .voronoi, .bokeh {
+.ball, .noise,.rectangle, .voronoi, .bokeh {
   /* margin-right: 10px; */
   /* margin-left: 10px; */
   margin: 10px 0;
   float: left;
 }
 
-.ball, .rectangle, .voronoi {
+fieldset:nth-of-type(2n-1){
   margin-right: 5px;
   width: calc(50% - 5px);
 }
 
-.noise, .reset, .bokeh {
+fieldset:nth-of-type(2n) {
   margin-left: 5px;
   width: calc(50% - 5px);
 }
