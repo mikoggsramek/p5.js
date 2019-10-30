@@ -28,7 +28,7 @@ function setup() {
   /* background url: Photo by Patrick Tomasso on Unsplash */
   //streetImage = loadImage('../assets/patrick-tomasso-D6Bk1A3-gMA-unsplash.jpg');
   // Photo by Gianni Scognamiglio on Unsplash
-  streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
+  //streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
   //Canvas Information
   var canvas = createCanvas(windowWidth, 250);
   //set it to be under a dom element with the id of 'sketch'
