@@ -4,7 +4,7 @@ function Ball(x, y, bounceFX){
   this.dir =0;//= random(4);
   this.xDir = 0.1 + random(3);
   this.yDir = this.xDir;
-  this.c = color(219, 112, 147);
+  this.c = color(234, 89, 62);
   this.soundfx = bounceFX;
 
   this.size = 10;
@@ -33,5 +33,7 @@ function Ball(x, y, bounceFX){
   this.randomize = function(){
     this.x = random(15,windowWidth-15);
     this.y = random(15,235);
+    this.xDir = 0.1 + random(-3, 3);
+    this.yDir = this.xDir * random(-1,1);
   }
 }

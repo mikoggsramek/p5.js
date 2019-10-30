@@ -4,22 +4,29 @@ var ball;
 var ball2;
 
 var ballArray = [];
-const maxBalls = 10;
+let maxBalls = 10;
 
 var noiseO = [];
 const maxNoise = 2;
 
 var voro;
 
+var bok;
+
 var displayIndex;
 let button;
 let voronoiSlider;
 
 let bounceFX;
+let streetImage;
+
 
 function setup() {
   bounceFX = loadSound('assets/bounce.wav');
-
+  /* background url: Photo by Patrick Tomasso on Unsplash */
+  //streetImage = loadImage('../assets/patrick-tomasso-D6Bk1A3-gMA-unsplash.jpg');
+  // Photo by Gianni Scognamiglio on Unsplash
+  streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
   //Canvas Information
   var canvas = createCanvas(windowWidth, 250);
   //set it to be under a dom element with the id of 'sketch'
@@ -29,22 +36,23 @@ function setup() {
   //In canvas "imagery"
   rectangle = new Rectangle(-5, 125);
   ball = new Ball(10, 10, bounceFX);
-  ball2 = new Ball(windowWidth - 40, 230, bounceFX);
   
   voro = new Voronoi();
   
   //for (let i = 0; i < maxNoise; i++){
-    // noiseO.push( new noiseObject(0, 0, color(random(100,255), random(100,255), random(100,255), 80), 0.01));
   noiseO.push(new noiseObject(0, 0, color(0,0,0), 0.01));
-  //}
   noiseO.push(new noiseObject(1000, 1000, color(255,255,255, 150), 0.01));
   noiseO.push(new noiseObject(10000, 10000, color(120,120,120, 40), 0.01));
+  //}
   
   
   for(let index = 0; index < maxBalls; index++){
     ballArray[index] = new Ball(0, 0, undefined);
     ballArray[index].randomize();
   }
+
+  bok = new Bokeh(50);
+  bok.create();
   
   //dom input creation
 
@@ -52,28 +60,32 @@ function setup() {
   button.mousePressed(resetDisplay)
   button.addClass('button');
   button.addClass('buttonReset');
-  button.parent('rectangle');
+  button.parent('reset');
 
   button = createButton('rectangle');
   button.mousePressed(showRectangle)
   button.addClass('button');
   button.parent('rectangle');
   
-  button = createButton('ball');
-  button.mousePressed(showBall1)
+  button = createButton('1 ball');
+  button.mousePressed(show1Ball)
   button.addClass('button');
   button.parent('ball');
   
-  button = createButton('ball 2');
-  button.mousePressed(showBall2)
+  button = createButton('2 balls');
+  button.mousePressed(show2Balls)
   button.addClass('button');
   button.parent('ball');
   
-  button = createButton('multiple balls');
-  button.mousePressed(showBalls)
+  button = createButton('10 balls');
+  button.mousePressed(show10Balls)
   button.addClass('button');
   button.parent('ball');
-  
+
+  button = createButton('50 balls');
+  button.mousePressed(show50Balls)
+  button.addClass('button');
+  button.parent('ball');
   
 
   button = createButton('noise');
@@ -89,6 +101,11 @@ function setup() {
   voronoiSlider = createSlider(1, 15, 6);
   voronoiSlider.addClass('button');
   voronoiSlider.parent('voronoi');
+
+  button = createButton('bokeh?');
+  button.mousePressed(showBokeh );
+  button.addClass('button');
+  button.parent('bokeh');
 
   background(255);
 }
@@ -107,24 +124,23 @@ function draw() {
     rectangle.update();
   }else if(displayIndex == 2){
     background(255);
-   ball.update();
-  }
-  else if(displayIndex == 3){
-    background(255);
-   ball.update();
-    ball2.update();
-  }else if(displayIndex == 4){
-    background(255);
     for(let index = 0; index < maxBalls; index++){
       ballArray[index].update();
     }
+  }else if (displayIndex == 3) {
+    background(255);
+    ball.update();
   }else if(displayIndex == 5){
     background(255);
     for(let i = 0; i < noiseO.length; i++){
       noiseO[i].update();
     }
+  }else if(displayIndex == 7){
+    background(255);
+    //3648 × 5472
+    image(streetImage,-1000,-1200, 3648/1, 5472/2);
+    bok.update();
   }
-  
 }
 
 function mousePressed() {
@@ -136,14 +152,32 @@ function mousePressed() {
 function showRectangle(){
   displayIndex = 1;
 }
-function showBall1(){
-  displayIndex = 2;
-}
-function showBall2(){
+function show1Ball(){
   displayIndex = 3;
 }
-function showBalls(){
-  displayIndex = 4;
+function show2Balls(){
+  displayIndex = 2;
+  maxBalls = 2;
+  for (let index = 0; index < maxBalls; index++) {
+    ballArray[index] = new Ball(0, 0, undefined);
+    ballArray[index].randomize();
+  }
+}
+function show10Balls(){
+  displayIndex = 2;
+  maxBalls = 10;
+  for (let index = 0; index < maxBalls; index++) {
+    ballArray[index] = new Ball(0, 0, undefined);
+    ballArray[index].randomize();
+  }
+}
+function show50Balls(){
+  displayIndex = 2;
+  maxBalls = 50;
+  for (let index = 0; index < maxBalls; index++) {
+    ballArray[index] = new Ball(0, 0, undefined);
+    ballArray[index].randomize();
+  }
 }
 function showNoise() {
   displayIndex = 5;
@@ -154,9 +188,12 @@ function drawVoronoi(){
   voro.generate(voronoiSlider.value());
   voro.draw();
 }
+function showBokeh(){
+  displayIndex = 7;
+}
 
 function resetDisplay(){
-  rectangle = new Rectangle(random(windowWidth), random(250));
+  rectangle = new Rectangle(-30, random(250));
   ball.randomize();
   ball2.randomize();
   for(let index = 0; index < maxBalls; index++){

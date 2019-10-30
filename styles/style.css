@@ -4,10 +4,13 @@ html, body {
   background-color: #EAF3F1;
 }
 
+/* background url: Photo by Patrick Tomasso on Unsplash */
+
 canvas {
   display: block;
   border-top: 5px solid #FFCDAF;
   border-bottom: 5px solid #FFCDAF;
+  /* background-image: url("../assets/patrick-tomasso-D6Bk1A3-gMA-unsplash.jpg"); */
 }
 
 .wrapper {
@@ -85,36 +88,26 @@ button:active {
   background-color: main-dark;
 }
 
-.buttonReset {
-  float: right;
-  margin-right: 0px;
-}
-
 .wrapper div {
   padding: 10px 0;
 }
 
-.ball, .noise {
+.ball, .noise, .rectangle, .reset, .voronoi, .bokeh {
   /* margin-right: 10px; */
   /* margin-left: 10px; */
   margin: 10px 0;
   float: left;
 }
 
-.ball {
+.ball, .rectangle, .voronoi {
   margin-right: 5px;
   width: calc(50% - 5px);
 }
 
-.noise {
+.noise, .reset, .bokeh {
   margin-left: 5px;
   width: calc(50% - 5px);
 }
-
-.voronoi {
-  clear: both;
-}
-
 .voronoi input {
   margin: 0;
 }
