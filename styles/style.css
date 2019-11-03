@@ -88,25 +88,42 @@ button:active {
   background-color: main-dark;
 }
 
-.wrapper div {
-  padding: 10px 0;
-}
-.ball, .noise,.rectangle, .voronoi, .bokeh {
-  /* margin-right: 10px; */
-  /* margin-left: 10px; */
+
+fieldset {
   margin: 10px 0;
+  margin-left: 15px;
   float: left;
+  width: calc(50% - 7.5px);
 }
-
-fieldset:nth-of-type(2n-1){
-  margin-right: 5px;
-  width: calc(50% - 5px);
+.rectangle, .noise{
+  width: 15%;
 }
-
-fieldset:nth-of-type(2n) {
-  margin-left: 5px;
-  width: calc(50% - 5px);
+.voronoi {
+  width: 15%;
+}
+.ball {
+  width: 30%;
+}
+.bokeh {
+  width: 10%;
 }
 .voronoi input {
   margin: 0;
+  width: 50px;
+}
+
+
+.sine {
+  /* clear:both; */
+  width: 100%;
+}
+.sine {
+  display: flex;
+  flex-wrap: wrap;
+}
+.sine div {
+  margin: 0 10px;
+}
+.sine input[type="checkbox"] {
+  margin: 5px 5px 0px 0;
 }

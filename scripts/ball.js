@@ -23,7 +23,7 @@ function Ball(x, y, bounceFX){
       this.soundfx.play();
      }
     }
-    if (this.y <= 0 + this.size/2 || this.y >= 250 - this.size/2){
+    if (this.y <= 0 + this.size/2 || this.y >= height - this.size/2){
      this.yDir *= -1; 
       if (this.soundfx != undefined) {
         this.soundfx.play();

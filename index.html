@@ -15,13 +15,15 @@
   <script src="scripts/voronoi.js"></script>
   <script src="scripts/bokeh.js"></script>
   <script src="scripts/noiseBars.js"></script>
+  <script src="scripts/recursiveCircles.js"></script>
+  <script src="./scripts/sine.js"></script>
 
   <script src="scripts/sketch.js"></script>
 
 
   <link rel="stylesheet" type="text/css" href="styles/style.css">
   <link rel="stylesheet" type="text/css" href="styles/normalize.css">
-  
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
   <title>Exploring p5.js</title>
 </head>
@@ -31,15 +33,18 @@
     <div class="wrapper">
       <nav class="main-nav">
         <ul>
-          <li><a href="#">home</a></li>
-          <li><a href="#">about</a></li>
-          <li><a href="#">store</a></li>
+          <li><a href="https://p5js.org/" target="_blank">p5.js</a></li>
+          <li>|</li>
+          <li><a href="https://www.youtube.com/user/shiffman/featured" target="_blank">the-coding-train</a></li>
+          <li>|</li>
+          <li><a href="http://beesandbombs.com/" target="_blank">dave-whyte</a></li>
         </ul>
       </nav>
     </div>
     <div id="sketch"></div>
     <div class="wrapper clearfix">
       <h1>let's explore p5.js</h1>
+      <!-- Buttons created from p5.js: -->
       <fieldset id="rectangle" class="rectangle">
         <legend>Rectangle</legend>
         <!--           buttons go here -->
@@ -60,7 +65,19 @@
         <legend>Bokeh</legend>
         <!--           buttons go here -->
       </fieldset>
+      <fieldset id="sine" class="sine">
+        <legend>Sine</legend>
+        <!--           buttons go here -->
+        <div id="sineBase"></div>
+        <div id="control5"></div>
+        <div id="control1"></div>
+        <div id="control2"></div>
+        <div id="control3"></div>
+        <div id="control4"></div>
+        
+      </fieldset>
     </div>
+    <div id="sketch2"></div>
   </header>
 
 
