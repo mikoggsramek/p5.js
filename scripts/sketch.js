@@ -16,19 +16,38 @@ var bok;
 var bars;
 
 var displayIndex;
-let button;
-let voronoiSlider;
+var button;
+var voronoiSlider;
+
+var rCirc;
+
+var sineWave;
+
+var sineAmplitudeSlider;
+var sineAmplitudeLabel;
+
+var sineAngularFrequencySlider;
+var sineAngularFrequencyLabel;
+
+var sinePhaseSlider;
+var sinePhaseLabel;
+
+var sineTimeCheckbox;
+var sineShowLineCheckbox;
+
+var sineDotNumberSlider;
+var sineDotNumberLabel;
 
 let bounceFX;
 let streetImage;
 
 
 function setup() {
-  bounceFX = loadSound('assets/bounce.wav');
+  bounceFX = undefined;// loadSound('assets/bounce.wav');
   /* background url: Photo by Patrick Tomasso on Unsplash */
   //streetImage = loadImage('../assets/patrick-tomasso-D6Bk1A3-gMA-unsplash.jpg');
   // Photo by Gianni Scognamiglio on Unsplash
-  streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
+  //streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
   //Canvas Information
   var canvas = createCanvas(windowWidth, 250);
   //set it to be under a dom element with the id of 'sketch'
@@ -58,10 +77,16 @@ function setup() {
 
   bars = new NoiseBars();
   
+  rCirc = new RecursiveCircles(10, 10);
+
+  sineWave = new Sine();
   
   //dom input creation
   CreateDomElements();
   background(255);
+
+  
+  // rCirc.Draw();
 }
 
 function windowResized() {
@@ -83,6 +108,10 @@ function draw() {
   }else if (displayIndex == 3) {
     background(255);
     ball.update();
+  }else if(displayIndex == 6){
+    if(sineTimeCheckbox.checked()){
+      sineWave.Draw(sineAmplitudeSlider.value(), sineAngularFrequencySlider.value(), sinePhaseSlider.value(), sineDotNumberSlider.value(), sineShowLineCheckbox.checked());
+    }
   }else if(displayIndex == 5){
     background(255);
     for(let i = 0; i < noiseO.length; i++){
@@ -149,15 +178,26 @@ function showBars(){
 }
 
 function drawVoronoi(){
-  displayIndex = 6;
+  displayIndex = 99;
   voro.generate(voronoiSlider.value());
   voro.draw();
 }
 function showBokeh(){
   displayIndex = 7;
 }
-
-
+function showSine(){
+  displayIndex = 6;
+  drawSine();
+}
+function drawSine(){
+  sineAmplitudeLabel.html('Amplitude: ' + sineAmplitudeSlider.value());
+  sineAngularFrequencyLabel.html('Angular Frequency: ' + sineAngularFrequencySlider.value());
+  sinePhaseLabel.html('Phase: ' + sinePhaseSlider.value());
+  sineDotNumberLabel.html('Number of Boats: ' + sineDotNumberSlider.value());
+  if(displayIndex == 6){
+    sineWave.Draw(sineAmplitudeSlider.value(), sineAngularFrequencySlider.value(), sinePhaseSlider.value(), sineDotNumberSlider.value(), sineShowLineCheckbox.checked());
+  }
+}
 
 
 
@@ -214,4 +254,49 @@ function CreateDomElements(){
   button.addClass('button');
   button.parent('noise');
 
+
+  button = createButton('wave');
+  button.mousePressed(showSine);
+  button.addClass('button');
+  button.parent('sineBase');
+
+  sineTimeCheckbox = createCheckbox('Simulate Time');
+  sineTimeCheckbox.parent('control5');
+  sineTimeCheckbox.changed(drawSine);
+
+  sineShowLineCheckbox = createCheckbox("Show Base Lines");
+  sineShowLineCheckbox.parent('control5');
+  sineShowLineCheckbox.checked(true);// = true;
+  sineShowLineCheckbox.changed(drawSine);
+
+  sineAmplitudeLabel = createDiv('Amplitude: 6');
+  sineAmplitudeLabel.parent('control1');
+  sineAmplitudeSlider = createSlider(0.01, 5, 0.1, 0.1);
+  sineAmplitudeSlider.parent('control1');
+  sineAmplitudeSlider.changed(drawSine);
+  
+  sineAngularFrequencyLabel = createDiv('Angular Frequency: 6');
+  sineAngularFrequencyLabel.parent('control2');
+  sineAngularFrequencySlider = createSlider(0.01, 1, 0.1, 0.01);
+  sineAngularFrequencySlider.parent('control2');
+  sineAngularFrequencySlider.changed(drawSine);
+
+  sinePhaseLabel = createDiv('Phase: 6');
+  sinePhaseLabel.parent('control3');
+  sinePhaseSlider = createSlider(0.01, 5, 0.02, 0.1);
+  sinePhaseSlider.parent('control3');
+  sinePhaseSlider.changed(drawSine);
+
+  sineDotNumberLabel = createDiv('Phase: 6');
+  sineDotNumberLabel.parent('control4');
+  sineDotNumberSlider = createSlider(0,20, 0, 1);
+  sineDotNumberSlider.parent('control4');
+  sineDotNumberSlider.changed(drawSine);
+
+  sineAmplitudeLabel.html('Amplitude: ' + sineAmplitudeSlider.value());
+  sineAngularFrequencyLabel.html('Angular Frequency: ' + sineAngularFrequencySlider.value());
+  sinePhaseLabel.html('Phase: ' + sinePhaseSlider.value());
+  sineDotNumberLabel.html('Number of Boats: ' + sineDotNumberSlider.value());
+
+  
 }
