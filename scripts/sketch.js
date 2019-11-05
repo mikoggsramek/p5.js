@@ -132,7 +132,7 @@ function draw() {
 }
 
 function mousePressed() {
-  if (displayIndex == 6 && mouseY < height) {
+  if (displayIndex == 99 && mouseY < height) {
     voro.addPoint(mouseX, mouseY);
   }
 }
