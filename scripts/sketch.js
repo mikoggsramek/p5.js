@@ -1,42 +1,42 @@
-var rectangle;
+let rectangle;
 
-var ball;
-var ball2;
+let ball;
+let ball2;
 
-var ballArray = [];
+let ballArray = [];
 let maxBalls = 10;
 
-var noiseO = [];
+let noiseO = [];
 const maxNoise = 2;
 
-var voro;
+let voro;
 
-var bok;
+let bok;
 
-var bars;
+let bars;
 
-var displayIndex;
-var button;
-var voronoiSlider;
+let displayIndex;
+let button;
+let voronoiSlider;
 
-var rCirc;
+let rCirc;
 
-var sineWave;
+let sineWave;
 
-var sineAmplitudeSlider;
-var sineAmplitudeLabel;
+let sineAmplitudeSlider;
+let sineAmplitudeLabel;
 
-var sineAngularFrequencySlider;
-var sineAngularFrequencyLabel;
+let sineAngularFrequencySlider;
+let sineAngularFrequencyLabel;
 
-var sinePhaseSlider;
-var sinePhaseLabel;
+let sinePhaseSlider;
+let sinePhaseLabel;
 
-var sineTimeCheckbox;
-var sineShowLineCheckbox;
+let sineTimeCheckbox;
+let sineShowLineCheckbox;
 
-var sineDotNumberSlider;
-var sineDotNumberLabel;
+let sineDotNumberSlider;
+let sineDotNumberLabel;
 
 let bounceFX;
 let streetImage;
@@ -49,7 +49,7 @@ function setup() {
   // Photo by Gianni Scognamiglio on Unsplash
   //streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
   //Canvas Information
-  var canvas = createCanvas(windowWidth, 250);
+  let canvas = createCanvas(windowWidth, 250);
   //set it to be under a dom element with the id of 'sketch'
   canvas.parent('sketch');
   displayIndex = 0;
