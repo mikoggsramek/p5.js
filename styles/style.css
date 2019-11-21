@@ -18,23 +18,32 @@ canvas {
   width: 90%;
 }
 
-header {
+
+header, main {
   background-color: #EAF3F1;
   color: #EA593E;
   font-family: sans-serif;
   position: relative;
-  padding: 20px 0;
+  
+}
+header {
+padding: 20px 0;
 }
 
 h1 {
   padding: 10px 0;
   margin: 0;
   z-index: 2;
+  font-size: 25px;
 }
 
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.buttons {
+  overflow: hidden;
 }
 
 .main-nav ul {
@@ -88,25 +97,74 @@ button:active {
   background-color: main-dark;
 }
 
+.checkbox {
+  clear: both;
+  display: none;
+}
+
+.radioLabel {
+  display: block;
+  width: calc(100% / 6);
+  padding: 10px 15px; 
+  float: left;
+  cursor: pointer;
+  background-color: #4A455C;
+  border-radius: 15px 15px 0 0;
+  border: 1px solid #4A455C;
+  position: relative;
+}
+.radioLabel:nth-of-type(1)::before{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px 15px 0 0;
+  right: 100%;
+  bottom: -1px;
+  position: absolute;
+  background-color: #4A455C;
+}
+.radioLabel:last-of-type::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px 15px 0 0;
+  left: 100%;
+  bottom: -1px;
+  position: absolute;
+  background-color: #4A455C;
+}
+.checkbox:checked + label {
+  background-color: #fff;
+}
+
+.checkbox:checked ~ fieldset {
+  display: none;
+}
+.rect:checked ~ .rectangle,
+.ball:checked ~ .ball,
+.noise:checked ~ .noise,
+.voronoi:checked ~ .voronoi,
+.bokeh:checked ~ .bokeh {
+  display: block;
+}
+
+.sine:checked ~ .sine {
+  display: flex;
+  bottom: -150px;
+}
 
 fieldset {
-  margin: 10px 0;
-  margin-left: 15px;
+  display: none;
+  margin: 10px 15px;
   float: left;
-  width: calc(50% - 7.5px);
+  width: calc(100% - 30px);
+  position: absolute;
+  bottom: -100px;
+  left: 0;
 }
-.rectangle, .noise{
-  width: 15%;
-}
-.voronoi {
-  width: 15%;
-}
-.ball {
-  width: 30%;
-}
-.bokeh {
-  width: 10%;
-}
+
 .voronoi input {
   margin: 0;
   width: 50px;
@@ -114,11 +172,6 @@ fieldset {
 
 
 .sine {
-  /* clear:both; */
-  width: 100%;
-}
-.sine {
-  display: flex;
   flex-wrap: wrap;
 }
 .sine div {
@@ -126,4 +179,7 @@ fieldset {
 }
 .sine input[type="checkbox"] {
   margin: 5px 5px 0px 0;
+}
+.sine label {
+  width: auto;
 }
