@@ -53,7 +53,7 @@ function setup() {
   // Photo by Gianni Scognamiglio on Unsplash
   //streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
 
-  superSecretImage = loadImage('../assets/secret.jpeg');
+  superSecretImage = loadImage('/assets/secret.jpeg');
 
   //Canvas Information
   let canvas = createCanvas(windowWidth, 400);
