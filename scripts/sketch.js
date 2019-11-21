@@ -47,7 +47,7 @@ let typed;
 
 
 function setup() {
-  bounceFX = undefined;// loadSound('assets/bounce.wav');
+  bounceFX = loadSound('assets/bounce.wav');
   /* background url: Photo by Patrick Tomasso on Unsplash */
   //streetImage = loadImage('../assets/patrick-tomasso-D6Bk1A3-gMA-unsplash.jpg');
   // Photo by Gianni Scognamiglio on Unsplash
