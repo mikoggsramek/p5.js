@@ -5,7 +5,7 @@ function Rectangle(x, y) {
   this.update = function(){
     fill(this.c);
     stroke(this.c);
-    rect(this.x,this.y,25,25);
+    rect(this.x,this.y,50,50);
     this.x++;
     // this.y++; 
     // this.y %= 250;

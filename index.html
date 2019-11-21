@@ -6,9 +6,9 @@
   <meta charset="utf-8">
   
 
-
-  <link rel="stylesheet" type="text/css" href="styles/style.css">
   <link rel="stylesheet" type="text/css" href="styles/normalize.css">
+  <link rel="stylesheet" type="text/css" href="styles/style.css">
+  
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
   <title>Exploring p5.js</title>
@@ -34,69 +34,76 @@
     <div id="sketch"></div>
   </header>
   <main>
-    <section>
+    <section class="buttons">
       <div class="wrapper clearfix">
-        <h1>let's explore p5.js</h1>
+        <h1>let's explore</h1>
         <!-- Buttons created from p5.js: -->
   
-        <input type="radio" name="field" id="rectangleCheck" class="checkbox rect" checked>
-        <label for="rectangleCheck" class="radioLabel">Rectangle</label>
-        
-  
-        <fieldset id="rectangle" class="rectangle">
-          <legend>Rectangle</legend>
-          <!--           buttons go here -->
-        </fieldset>
-  
-        <input type="radio" name="field" id="ballCheck" class="checkbox ball">
-        <label for="ballCheck" class="radioLabel">Ball</label>
-        
-        <fieldset id="ball" class="ball">
-          <legend>Ball</legend>
-          <!--           buttons go here -->
-        </fieldset>
+        <div class="controls">
 
-        <input type="radio" name="field" id="noiseCheck" class="checkbox noise">
-        <label for="noiseCheck" class="radioLabel">Noise</label>
-        
-        <fieldset id="noise" class="noise">
-          <legend>Noise</legend>
-          <!--           buttons go here -->
-        </fieldset>
-
-        <input type="radio" name="field" id="voronoiCheck" class="checkbox voronoi">
-        <label for="voronoiCheck" class="radioLabel">Voronoi</label>
-      
-        <fieldset id="voronoi" class="voronoi">
-          <legend>Voronoi</legend>
-          <!--           buttons go here -->
-        </fieldset>
-
-        <input type="radio" name="field" id="bokehCheck" class="checkbox bokeh">
-        <label for="bokehCheck" class="radioLabel">Bokeh</label>
-
-        <fieldset id="bokeh" class="bokeh">
-          <legend>Bokeh</legend>
-          <!--           buttons go here -->
-        </fieldset>
-
-        <input type="radio" name="field" id="sineCheck" class="checkbox sine">
-        <label for="sineCheck" class="radioLabel">Sine</label>
-
-        <fieldset id="sine" class="sine">
-          <legend>Sine</legend>
-          <!--           buttons go here -->
-          <div id="sineBase"></div>
-          <div id="control5"></div>
-          <div id="control1"></div>
-          <div id="control2"></div>
-          <div id="control3"></div>
-          <div id="control4"></div>
+          <input type="radio" name="field" id="rectangleCheck" class="checkbox rect" checked>
+          <label for="rectangleCheck" class="radioLabel">Rectangle</label>
+    
+          <fieldset id="rectangle" class="rectangle">
+            <legend>Rectangle</legend>
+            <!--           buttons go here -->
+          </fieldset>
+    
+          <input type="radio" name="field" id="ballCheck" class="checkbox ball">
+          <label for="ballCheck" class="radioLabel">Circles</label>
           
-        </fieldset>
+          <fieldset id="ball" class="ball">
+            <legend>Circles</legend>
+            <!--           buttons go here -->
+          </fieldset>
+  
+          <input type="radio" name="field" id="noiseCheck" class="checkbox noise">
+          <label for="noiseCheck" class="radioLabel">Noise</label>
+          
+          <fieldset id="noise" class="noise">
+            <legend>Noise</legend>
+            <!--           buttons go here -->
+          </fieldset>
+  
+          <input type="radio" name="field" id="voronoiCheck" class="checkbox voronoi">
+          <label for="voronoiCheck" class="radioLabel">Voronoi</label>
+        
+          <fieldset id="voronoi" class="voronoi">
+            <legend>Voronoi</legend>
+            <!--           buttons go here -->
+          </fieldset>
+  
+          <input type="radio" name="field" id="bokehCheck" class="checkbox bokeh">
+          <label for="bokehCheck" class="radioLabel">Bokeh</label>
+  
+          <fieldset id="bokeh" class="bokeh">
+            <legend>Bokeh</legend>
+            <!--           buttons go here -->
+          </fieldset>
+  
+          <input type="radio" name="field" id="sineCheck" class="checkbox sine">
+          <label for="sineCheck" class="radioLabel">Sine</label>
+  
+          <fieldset id="sine" class="sine">
+            <legend>Sine</legend>
+            <!--           buttons go here -->
+            <div id="sineBase"></div>
+            <div id="control5"></div>
+            <div id="control1"></div>
+            <div id="control2"></div>
+            <div id="control3"></div>
+            <div id="control4"></div>
+            
+          </fieldset>
+        </div>
       </div> <!-- End of Wrapper -->
     </section>
   </main>
+
+
+  <!-- jQuery -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <!-- Load any other plugins here: -->
 
   <script src="scripts/p5.js"></script>
   <script src="scripts/p5.dom.min.js"></script>
@@ -111,6 +118,8 @@
   <script src="scripts/noiseBars.js"></script>
   <script src="scripts/recursiveCircles.js"></script>
   <script src="./scripts/sine.js"></script>
+  <script src="./scripts/pong.js"></script>
+  <script src="./scripts/type.js"></script>
 
   <script src="scripts/sketch.js"></script>
 </body>

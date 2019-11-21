@@ -38,8 +38,12 @@ let sineShowLineCheckbox;
 let sineDotNumberSlider;
 let sineDotNumberLabel;
 
+let pong;
+
 let bounceFX;
 let streetImage;
+
+let typed;
 
 
 function setup() {
@@ -48,11 +52,14 @@ function setup() {
   //streetImage = loadImage('../assets/patrick-tomasso-D6Bk1A3-gMA-unsplash.jpg');
   // Photo by Gianni Scognamiglio on Unsplash
   //streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
+
+  superSecretImage = loadImage('../assets/secret.jpeg');
+
   //Canvas Information
-  let canvas = createCanvas(windowWidth, 250);
+  let canvas = createCanvas(windowWidth, 400);
   //set it to be under a dom element with the id of 'sketch'
   canvas.parent('sketch');
-  displayIndex = 0;
+  displayIndex = -6;
   
   //In canvas "imagery"
   rectangle = new Rectangle(-25, 125);
@@ -80,6 +87,10 @@ function setup() {
   rCirc = new RecursiveCircles(10, 10);
 
   sineWave = new Sine();
+
+  pong = new Pong();
+
+  typed = new Typed();
   
   //dom input creation
   CreateDomElements();
@@ -90,14 +101,29 @@ function setup() {
 }
 
 function windowResized() {
- resizeCanvas(windowWidth, 250);
+ resizeCanvas(windowWidth, 400);
 }
 
 function draw() {
   //background(10,0,10);
   fill(220);
   stroke(220);
-  if(displayIndex == 1){
+  if(displayIndex == -6){
+    typed.draw("", width*0.05, height/2, 25, 100000);
+  }else if(displayIndex == -5){
+    // drawText();
+    typed.draw("P5.JS", width*0.05, height/2, 25, 10);
+  }else if(displayIndex == -4){
+    typed.draw("Processing ☞ The web", width*0.05, height/2, 25, 6);
+  }else if(displayIndex == -3){
+    typed.draw("'creative coding, with a focus on making coding accessible'", width*0.05, height/2, 25, 3);
+  }else if(displayIndex == -2){
+    typed.draw("3 external scripts + your own code", width*0.05, height/2, 25, 3);
+  }else if(displayIndex == -1){
+    typed.draw("1.0 release coming early 2020", width*0.05, height/2, 25, 3);
+  }else if(displayIndex == 0){
+    typed.draw("and yes I did recreate typed.js    🔥 🔥 🔥 🔥", width*0.05, height/2, 25, 3);
+  }else if(displayIndex == 1){
     background(255);
     rectangle.update();
   }else if(displayIndex == 2){
@@ -125,12 +151,21 @@ function draw() {
   }else if(displayIndex == 8){
     
     bars.update();
-    text(width, 10, 10);
   }
-
   
 }
-
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    advanceText(-1);
+  } else if (keyCode === RIGHT_ARROW) {
+    advanceText(1);
+  }
+  if(keyCode === 72){
+    for (let index = 0; index < maxBalls; index++) {
+      ballArray[index].becomeHand();
+    }
+  }
+}
 function mousePressed() {
   if (displayIndex == 99 && mouseY < height) {
     voro.addPoint(mouseX, mouseY);
@@ -199,7 +234,10 @@ function drawSine(){
   }
 }
 
-
+function advanceText(change){
+  displayIndex+=change;
+  typed.index = 0;
+}
 
 function CreateDomElements(){
 
@@ -208,22 +246,22 @@ function CreateDomElements(){
   button.addClass('button');
   button.parent('rectangle');
 
-  button = createButton('1 ball');
+  button = createButton('1 circle');
   button.mousePressed(show1Ball)
   button.addClass('button');
   button.parent('ball');
 
-  button = createButton('2 balls');
+  button = createButton('2 circles');
   button.mousePressed(show2Balls)
   button.addClass('button');
   button.parent('ball');
 
-  button = createButton('10 balls');
+  button = createButton('10 circles');
   button.mousePressed(show10Balls)
   button.addClass('button');
   button.parent('ball');
 
-  button = createButton('50 balls');
+  button = createButton('50 circles');
   button.mousePressed(show50Balls)
   button.addClass('button');
   button.parent('ball');

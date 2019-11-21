@@ -9,11 +9,16 @@ function Ball(x, y, bounceFX){
 
   this.size = 10;
   
+  this.safiIsHandsome = false;
+
   this.update = function(){
     fill(this.c);
     stroke(this.c);
-    ellipse(this.x, this.y, this.size, this.size);
-    
+    if(!this.safiIsHandsome){
+      ellipse(this.x, this.y, this.size, this.size);
+    }else{
+      image(superSecretImage, this.x, this.y, this.size * 4, this.size * 4);
+    }
     this.x += this.xDir;
     this.y += this.yDir;
 
@@ -32,8 +37,12 @@ function Ball(x, y, bounceFX){
   }
   this.randomize = function(){
     this.x = random(15,windowWidth-15);
-    this.y = random(15,235);
+    this.y = random(15,height - 15);
     this.xDir = 0.1 + random(-3, 3);
     this.yDir = this.xDir * random(-1,1);
+  }
+
+  this.becomeHand = function(){
+    this.safiIsHandsome = !this.safiIsHandsome;
   }
 }
