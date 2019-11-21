@@ -47,13 +47,13 @@ let typed;
 
 
 function setup() {
-  bounceFX = loadSound('assets/bounce.wav');
+  bounceFX = loadSound('./assets/bounce.wav');
   /* background url: Photo by Patrick Tomasso on Unsplash */
   //streetImage = loadImage('../assets/patrick-tomasso-D6Bk1A3-gMA-unsplash.jpg');
   // Photo by Gianni Scognamiglio on Unsplash
   //streetImage = loadImage('../assets/gianni-scognamiglio-L4sYuLbtVFs-unsplash.jpg');
 
-  superSecretImage = loadImage('/assets/secret.jpeg');
+  superSecretImage = loadImage('./assets/secret.jpeg');
 
   //Canvas Information
   let canvas = createCanvas(windowWidth, 400);
